@@ -1,17 +1,21 @@
 {
   "name": "memoizer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "A simple memoizer",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
-  "engines" : { "node" : ">=12.0.0" },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "files": [
     "index.js"
   ],
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sasidakh/memoizer.git"
