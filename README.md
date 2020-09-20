@@ -8,7 +8,7 @@ the recursive function and using it in the immplementation but nothing
 generic exists. This is my attempt at writing one.
 
 So far this works only with javascript module syntax(.mjs) and will
-break with anything other than a single line function expression.
+break with anything other than arrow functions.
 
 ## Usage:
 
