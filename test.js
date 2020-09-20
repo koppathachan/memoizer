@@ -7,8 +7,13 @@ const fib = (n) => n > 1 ? fib(n - 1) + fib(n - 2) : n;
 // different syntax because I am literally rewriting the code.
 const fib1 = n => n > 1 ? fib1(n - 1) + fib1(n - 2) : n;
 
+const fib2 = (n) => {
+  if (n > 1) { return fib2(n - 1) + fib2(n - 2); }
+  else { return n; }
+};
+
 // this syntax is not handled
-function fib2 (n) {
+function fib3 (n) {
   if (n > 1) {
     return fib1(n - 1) + fib2(n - 2);
   } else {
