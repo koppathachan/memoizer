@@ -2,18 +2,25 @@
   "name": "memoizer",
   "version": "0.0.0",
   "type": "module",
-  "description": "A simple mempizer",
+  "description": "A simple memoizer",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
+  "engines" : { "node" : ">=12.0.0" },
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sasidakh/memoizer.git"
   },
   "keywords": [
     "memoizer",
-    "functional"
+    "memoize",
+    "functional",
+    "recursion",
+    "fast-memoize"
   ],
   "author": "Akhil Sasidharan",
   "license": "MIT",
