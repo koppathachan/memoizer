@@ -10,10 +10,16 @@ generic exists. This is my attempt at writing one.
 So far this works only with javascript module syntax(.mjs) and will
 break with anything other than a single line function expression.
 
-Usage:
+## Usage:
+
 ```js
 // the fibonacci series using recursion.
 const fib = (n) => n > 1 ? fib(n - 1) + fib(n - 2) : n;
 const fibMemo = memoize(fib);
 fibMemo(40); // run the test file to see benchmarks
+```
+
+## To get benchmarks and a trivial test, run :
+```js
+npm test
 ```
