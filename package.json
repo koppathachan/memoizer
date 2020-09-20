@@ -1,6 +1,6 @@
 {
-  "name": "memoizer",
-  "version": "0.1.0",
+  "name": "@sasidakh/memoizer",
+  "version": "0.1.1",
   "type": "module",
   "description": "A simple memoizer",
   "main": "index.js",
