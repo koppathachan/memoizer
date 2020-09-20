@@ -1,0 +1,26 @@
+{
+  "name": "memoizer",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A simple mempizer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sasidakh/memoizer.git"
+  },
+  "keywords": [
+    "memoizer",
+    "functional"
+  ],
+  "author": "Akhil Sasidharan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sasidakh/memoizer/issues"
+  },
+  "homepage": "https://github.com/sasidakh/memoizer#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}
