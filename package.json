@@ -34,5 +34,8 @@
   },
   "homepage": "https://github.com/sasidakh/memoizer#readme",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "escodegen": "^2.0.0",
+    "esprima": "^4.0.1"
+  }
 }

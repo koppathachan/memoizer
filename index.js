@@ -1,26 +1,37 @@
-const removeStartingPara = args => args.startsWith('(') && args.slice(1) || args;
-const removeEndingPara = args => args.endsWith(')') && args.slice(0, -1) || args;
-const sanitizeArgs = args => removeStartingPara(removeEndingPara(args.trim()));
+import esprima from 'esprima';
+import escodegen from 'escodegen';
 
-const isEnclosed = body => (body.startsWith('{') && body.endsWith('}'));
+const isExpression = exp => exp && exp.expression && exp.expression.type === 'ArrowFunctionExpression';
+const isFunction = fn => fn && fn.type === 'FunctionDeclaration';
+const parseFunc = exp => esprima.parseScript(exp).body[0];
+const parseExpParams = ({ expression: { params } }) => params.map(p => p.name).join();
+const parseExpBody = ({ expression: { body, expression } }) => (expression && gen(body)) || genFn(body);
+const parseFnParams = ({ params }) => params.map(p => p.name).join();
+const parseFnBody = ({ body }) => genFn(body);
+const gen = code => escodegen.generate(code);
+const genFn = code => `(() => ${gen(code)})()`;
 
-const sanitizeBody = body => isEnclosed(body) && `(() => ${body})()` || body; 
-
-// TODO: handle non arrow functions.
-export const memoize = (func, cache = Object.create(null)) => {
-  // splits based on '=>'
-  const [argsWithBrackets, ...bodyParts] = func.toString().split('=>');
-  const args = sanitizeArgs(argsWithBrackets);
-  const body = sanitizeBody(bodyParts.join('=>').trim());
-  const key = JSON.stringify(args);
-  return new Function('cache',
-`
-return function ${func.name} (${args}) {
+const memoizedFn = (name, args, body) => `
+return function ${name} (${args}) {
   let result = cache[JSON.stringify([${args}])]
   if (result) { return result; }
   result = ${body}
   cache[JSON.stringify([${args}])] = result;
   return result;
 }
-`)(cache);
+`;
+
+// TODO: typescript
+export const memoize = (func, cache = Object.create(null)) => {
+  const parsedFunc = parseFunc(func.toString());
+  if(isExpression(parsedFunc)) {
+    return new Function('cache',
+			memoizedFn(func.name, parseExpParams(parsedFunc), parseExpBody(parsedFunc)))(cache);
+  }
+  if(isFunction(parsedFunc)) {
+    return new Function('cache',
+			memoizedFn(func.name, parseFnParams(parsedFunc), parseFnBody(parsedFunc)))(cache);
+  }
+
+  throw new Error('Error adding memoization unsupported format.');
 };
