@@ -16,7 +16,7 @@ const fibMemo = memoize(fib);
 fibMemo(40); // run the test file to see benchmarks
 ```
 
-## To get benchmarks and a trivial test, run :
+## To get benchmarks and a more than trivial test, run :
 ```js
 npm test
 ```
