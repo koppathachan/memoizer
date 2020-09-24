@@ -1,5 +1,5 @@
-import { memoize } from './index.js';
-import { strict as assert } from 'assert';
+const { memoize } = require('./index');
+const { strict: assert } = require('assert');
 
 const fact = n => n && (BigInt(n) * fact(n - 1)) || BigInt(1);
 

@@ -1,5 +1,5 @@
-import { memoize } from './index.js';
-import { strict as assert }  from 'assert';
+const { memoize } = require('./index');
+const { strict: assert } = require('assert');
 
 
 // the fibonacci series using recursion.
@@ -42,7 +42,6 @@ const time = func => {
   func();
   return timer(start);
 };
-
 
 const timeWr = time(_ => fibWr(40));
 const timeRecursion = time(_ => fib(40));
