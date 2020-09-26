@@ -4,7 +4,7 @@
   "description": "A simple memoizer",
   "main": "index.js",
   "scripts": {
-    "test": "./tests.js"
+    "test": "./tests.sh"
   },
   "files": [
     "index.js"
